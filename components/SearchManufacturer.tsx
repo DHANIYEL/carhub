@@ -1,7 +1,7 @@
 import { SearchManufacturerProps } from "@/types";
 import { Combobox, Transition } from "@headlessui/react";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useState, Fragment } from "react";
 
 const SearchManufacturer = ({
   manufacturer,
@@ -26,7 +26,16 @@ const SearchManufacturer = ({
             placeholder="Volkswagen"
             displayValue={(manufacturer: string) => manufacturer}
             onChange={(e) => setQuery(e.target.value)}
-          ></Combobox.Input>
+          />
+          <Transition
+            as={Fragment}
+            leave="transition ease-in duration-100"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+            afterLeave={() => setQuery("")}
+          >
+            <Combobox.Options></Combobox.Options>
+          </Transition>
         </div>
       </Combobox>
     </div>

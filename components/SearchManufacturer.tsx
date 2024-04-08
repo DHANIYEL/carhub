@@ -22,9 +22,9 @@ const SearchManufacturer = ({
 
   return (
     <div className="search-manufacturer">
-      <Combobox>
+      <Combobox value={manufacturer} onChange={setManufacturer}>
         <div className="relative w-full">
-          <Combobox.Button>
+          <Combobox.Button className="absolute top-[14px]">
             <Image
               src="./car-logo.svg"
               alt="car logo"
@@ -34,7 +34,7 @@ const SearchManufacturer = ({
             />
           </Combobox.Button>
           <Combobox.Input
-            className="search-manufacturer-input"
+            className="search-manufacturer__input"
             placeholder="Volkswagen"
             displayValue={(manufacturer: string) => manufacturer}
             onChange={(e) => setQuery(e.target.value)}
@@ -50,9 +50,9 @@ const SearchManufacturer = ({
               {filteredManufacturers.length === 0 && query !== "" ? (
                 <Combobox.Option
                   value={query}
-                  className="search-manufacturer__option"
+                  className="search-manufacturer__option shadow-md rounded-sm "
                 >
-                  Create "{query}"
+                  Not Found :"{query}"
                 </Combobox.Option>
               ) : (
                 filteredManufacturers.map((item) => (
@@ -65,7 +65,24 @@ const SearchManufacturer = ({
                     }
                     value={item}
                   >
-                    {item}
+                    {({ selected, active }) => (
+                      <>
+                        <span
+                          className={`block truncate ${
+                            selected ? "font-medium" : "font-normal"
+                          }`}
+                        >
+                          {item}
+                        </span>
+                        {selected ? (
+                          <span
+                            className={`absolute inset-y-0 left-0 flex items-center pl-3 ${
+                              active ? "text-white" : "text-teal-600"
+                            }`}
+                          ></span>
+                        ) : null}
+                      </>
+                    )}
                   </Combobox.Option>
                 ))
               )}

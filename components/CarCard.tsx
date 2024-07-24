@@ -1,11 +1,13 @@
 "use client";
 
 import { CustomButton } from "./CustomButton";
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import { CarProps } from "@/types";
 import React from "react";
 import { calculateCarRent } from "@/utils";
 import Image from "next/image";
+import CarDetails from "./CarDetails";
+import { Dialog, Transition } from "@headlessui/react";
 
 interface carCardProps {
   car: CarProps;
@@ -13,7 +15,6 @@ interface carCardProps {
 
 const CarCard = ({ car }: carCardProps) => {
   const { city_mpg, year, make, model, transmission, drive } = car;
-  useSsn;
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -65,11 +66,16 @@ const CarCard = ({ car }: carCardProps) => {
             title="View More"
             containerStyles="w-full rounded-full bg-primary-blue py-[16px]"
             textStyles="text-white text-[14px] leading-[17px] font-bold"
-            rightIcon="/right-arrw.svg"
+            rightIcon="/right-arrow.svg"
             handleClick={() => setIsOpen(true)}
           />
         </div>
       </div>
+      <CarDetails
+        isOpen={isOpen}
+        closeModel={() => setIsOpen(false)}
+        car={car}
+      />
     </div>
   );
 };

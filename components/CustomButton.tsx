@@ -9,15 +9,28 @@ export const CustomButton = ({
   containerStyles,
   handleClick,
   btnType,
-}: CustomButtonPorps) => {
+  textStyles,
+  rightIcon,
+}: // isDesabled,
+CustomButtonPorps) => {
   return (
     <button
       disabled={false}
       type={btnType || "button"}
-      className={`custom-btn ${containerStyles}`}
-      onClick={() => {}}
+      className={`custom-btn ${containerStyles} `}
+      onClick={handleClick}
     >
-      <span className={`flex-1`}>{title}</span>
+      <span className={`flex-1 ${textStyles}`}>{title}</span>
+      {rightIcon && (
+        <div className="relative w-6 h-6 ">
+          <Image
+            src={rightIcon}
+            alt="right Icon"
+            fill
+            className="object-contain"
+          />
+        </div>
+      )}
     </button>
   );
 };

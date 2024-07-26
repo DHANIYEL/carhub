@@ -39,7 +39,7 @@ const CarDetails = ({ isOpen, closeModel, car }: CarDetailsProps) => {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="relative w-full max-w-full max-h-[90vh] overflow-y-auto transition-all transform rounded-2xl bg-white text-left shadow-xl flex flex-col gap-5">
+                <Dialog.Panel className="relative w-full p-6 max-w-full max-h-[90vh] overflow-y-auto transition-all transform rounded-2xl bg-white text-left shadow-xl flex flex-col gap-5">
                   <button
                     type="button"
                     onClick={closeModel}
@@ -62,6 +62,50 @@ const CarDetails = ({ isOpen, closeModel, car }: CarDetailsProps) => {
                         className="object-contain"
                         alt="car img"
                       />
+                    </div>
+                    <div className="flex gap-3">
+                      <div className="flex-1 w-full h-24 relative rounded-lg bg-primary-blue-100 ">
+                        <Image
+                          src="/hero.png"
+                          fill
+                          priority
+                          className="object-contain"
+                          alt="car img"
+                        />
+                      </div>
+                      <div className="flex-1 w-full h-24 relative rounded-lg bg-primary-blue-100 ">
+                        <Image
+                          src="/hero.png"
+                          fill
+                          priority
+                          className="object-contain"
+                          alt="car img"
+                        />
+                      </div>
+                      <div className="flex-1 w-full h-24 relative rounded-lg bg-primary-blue-100 ">
+                        <Image
+                          src="/hero.png"
+                          fill
+                          priority
+                          className="object-contain"
+                          alt="car img"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex flex-1 flex-col gap-2">
+                    <h1 className="font-semibold text-xl capitalize ">
+                      {car.make} {car.model}
+                    </h1>
+                    <div className="mt-3 flex flex-wrap gap-4">
+                      {Object.entries(car).map(([key, value]) => (
+                        <div className="flex justify-between w-full gap-5 text-right">
+                          <h4 className="text-grey capitalize">
+                            {key.split("_").join(" ")}
+                          </h4>
+                          <p>{value}</p>
+                        </div>
+                      ))}
                     </div>
                   </div>
                 </Dialog.Panel>

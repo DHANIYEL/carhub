@@ -5,7 +5,7 @@ import ShowMore from "@/components/ShowMore";
 import { fuels, yearsOfProduction } from "@/constants";
 import { HomeProps } from "@/types";
 import { fetchCars } from "@/utils";
-import { SearchBar } from "@/components";
+import SearchBar from "@/components/SearchBar";
 
 export default async function Home({ searchParams }: HomeProps) {
   const allCars = await fetchCars({
